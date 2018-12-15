@@ -21,6 +21,7 @@ function modal_close(){
     $('.comment_scr').empty();
 }
 $(document).ready(function(){
+    $('.scrape_btn').click();
     /**********************************************************************
      * CLICK TO GET ALL COMMENTS FOR AN ARTICLE AND OPEN MODAL WITH EDITOR
      *********************************************************************/
