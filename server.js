@@ -28,10 +28,24 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+//var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
-mongoose.connect("mongodb://heroku_v13nf3l2:j5xix46wQXqpKZC@ds019926.mlab.com:19926/heroku_v13nf3l2");
+//mongoose.connect("mongodb://heroku_v13nf3l2:j5xix46wQXqpKZC@ds019926.mlab.com:19926/heroku_v13nf3l2");
 //mongoose.connect("mongodb://localhost/hw14", { useNewUrlParser: true });
+
+mongoose.Promise = Promise; // Set mongoose to leverage Built in JavaScript ES6 Promises
+mongoose.connect("mongodb://heroku_v13nf3l2:j5xix46wQXqpKZC@ds019926.mlab.com:19926/heroku_v13nf3l2", { // Connect to the Mongo DB
+  useMongoClient: true
+});
+
+let mongooseConnection = mongoose.connection;
+
+mongooseConnection.on('error', console.error.bind(console, 'connection error:'));
+mongooseConnection.once('open', function() {
+  console.log(`Sucessfully Connected to Mongo DB !`); // If Connection is successful, Console.log(Message)
+});
+
+
 
 // Routes
 app.get("/", (req, res) => res.render("index"));
