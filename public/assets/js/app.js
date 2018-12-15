@@ -6,7 +6,7 @@ function call_alert(mode, msg){
     }
 }
 function modal_open(article_id, title){
-    console.log(article_id);
+    // console.log(article_id);
     $('#exampleModalCenter').removeClass('fade').show();
     $('.modal-title').text("Comment - " + decodeURIComponent(title));
     $('.modal_submit_btn').attr('data-article-id', article_id);
@@ -21,7 +21,7 @@ function modal_close(){
     $('.comment_scr').empty();
 }
 $(document).ready(function(){
-    $('.scrape_btn').click();
+    setTimeout(function(){window.location.href="/scrape";}, 2000);
     /**********************************************************************
      * CLICK TO GET ALL COMMENTS FOR AN ARTICLE AND OPEN MODAL WITH EDITOR
      *********************************************************************/
@@ -73,7 +73,7 @@ $(document).ready(function(){
             data : req_data
         })
         .then((res_data) => {
-            console.log(res_data);
+            // console.log(res_data);
             $('.comment_content').val("");
             var comment_div = $('<div class="border my-3 py-2 pb-3">');
             var comment_del_btn = $('<button class="comment_del_btn btn btn-danger float-right">');
