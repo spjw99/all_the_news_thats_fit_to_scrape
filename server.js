@@ -34,8 +34,8 @@ app.set("view engine", "handlebars");
 //mongoose.connect("mongodb://localhost/hw14", { useNewUrlParser: true });
 
 mongoose.Promise = Promise; // Set mongoose to leverage Built in JavaScript ES6 Promises
-mongoose.connect("mongodb://heroku_v13nf3l2:j5xix46wQXqpKZC@ds019926.mlab.com:19926/heroku_v13nf3l2", { // Connect to the Mongo DB
-  useMongoClient: true
+mongoose.connect("mongodb://spjw99:p050721m@ds019926.mlab.com:19926/heroku_v13nf3l2", { // Connect to the Mongo DB
+  useNewUrlParser: true
 });
 
 let mongooseConnection = mongoose.connection;
