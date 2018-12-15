@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">HW14</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link btn btn-info mr-3 " href="/saved_articles">Saved Articles</a>
+      <a class="nav-item nav-link btn btn-info" href="/scrape">SCRAPE NEW ARTICLES!</a>
+    </div>
+  </div>
+</nav>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">KPOP News</h1>
+    <p class="lead">The most recent 20 articles. You can save and leave comments.</p>
+  </div>
+</div>
+<div class="alert" role="alert"></div>
+<div class="container">
+    <div class="row news_src">
+        {{#each data}}
+        <div class="card col-sm-6 col-md-4 col-lg-3 m-1" style="">
+            <a href={{this.link}} target="_blank">
+                <img class="card-img-top" src={{this.image}} style="max-height: 140px;object-fit: cover;">
+            </a>
+            <div class="category">{{this.category}}</div>
+            <div class="card-body">
+                <a href={{this.link}} target="_blank">
+                    <h5 class="card-title">{{decodeURI this.title}}</h5>
+                </a>
+            </div>
+            <div class="card-footer">
+                {{#if this._id}}
+                    <span class="btn btn-danger float-right delete_btn" data-id={{this._id}} data-title={{this.title}} data-image={{this.image}} data-link={{this.link}} data-category={{this.category}}>DELETE</span>
+                    <span class="btn btn-success float-right comment_btn mr-3" data-toggle="modal" data-target="#exampleModalCenter" data-id={{this._id}} data-title={{this.title}} data-image={{this.image}} data-link={{this.link}} data-category={{this.category}}>COMMENT</span>
+                {{else}}
+                   <span class="btn btn-dark float-right save_article_btn"  data-title={{this.title}} data-image={{this.image}} data-link={{this.link}} data-category={{this.category}}>SAVE ARTICLE</span>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Comments</h5>
+        <button type="button" class="close modal_close_btn" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="comment_scr mb-5"></div>
+          <hr>
+          <textarea class="comment_content" placeholder="What are your thoughts?"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary modal_submit_btn" data-article-id="">Submit</button>
+        <button type="button" class="btn btn-secondary modal_close_btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

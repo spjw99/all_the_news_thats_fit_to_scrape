@@ -1,0 +1,16 @@
+.navbar-nav a{color:#FFF!important;}
+.saved_article_btn{cursor:pointer;}
+.card-body a {text-decoration: none;color:#222;}
+.card-body a:hover{color:#aaa;}
+
+.card .category{position: absolute;
+    margin: 0;
+    top: 10px;
+    left: 10px;
+    display: inline-block !important;
+    padding: 5px !important;
+    background-color: #bc0707 !important;
+    color: #fff !important;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+}
+.comment_content{width:100%;}
