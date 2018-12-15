@@ -31,6 +31,7 @@ app.set("view engine", "handlebars");
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 mongoose.Promise = Promise; // Set mongoose to leverage Built in JavaScript ES6 Promises
+mongoose.connect(MONGODB_URI);
 
 let mongooseConnection = mongoose.connection;
 
