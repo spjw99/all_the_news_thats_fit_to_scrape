@@ -21,7 +21,7 @@ function modal_close(){
     $('.comment_scr').empty();
 }
 $(document).ready(function(){
-    setTimeout(function(){window.location.href="/scrape";}, 2000);
+    //setTimeout(function(){window.location.href="/scrape";}, 2000);
     /**********************************************************************
      * CLICK TO GET ALL COMMENTS FOR AN ARTICLE AND OPEN MODAL WITH EDITOR
      *********************************************************************/
