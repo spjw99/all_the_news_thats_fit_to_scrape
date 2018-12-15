@@ -10,7 +10,7 @@ var helpers_url = helpers.url();
 // Require all models
 var db = require("./models");
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();
@@ -28,15 +28,15 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-//var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 //mongoose.connect("mongodb://heroku_v13nf3l2:j5xix46wQXqpKZC@ds019926.mlab.com:19926/heroku_v13nf3l2");
 //mongoose.connect("mongodb://localhost/hw14", { useNewUrlParser: true });
 
 mongoose.Promise = Promise; // Set mongoose to leverage Built in JavaScript ES6 Promises
-mongoose.connect("mongodb://spjw99:p050721m@ds019926.mlab.com:19926/heroku_v13nf3l2", { // Connect to the Mongo DB
-  useNewUrlParser: true
-});
+// mongoose.connect("mongodb://spjw99:p050721m@ds019926.mlab.com:19926/heroku_v13nf3l2", { // Connect to the Mongo DB
+//   useNewUrlParser: true
+// });
 
 let mongooseConnection = mongoose.connection;
 
